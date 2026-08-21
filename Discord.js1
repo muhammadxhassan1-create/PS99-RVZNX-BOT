@@ -1,0 +1,43 @@
+const { REST, Routes, SlashCommandBuilder } = require('discord.js');
+
+const commands = [
+    new SlashCommandBuilder()
+        .setName('coinflip')
+        .setDescription('🎰 Play a fair-odds coinflip game with visual UI panels')
+        .addIntegerOption(opt => 
+            opt.setName('gems').setDescription('Amount of Pet Simulator 99 gems to wager').setRequired(true))
+        .addStringOption(opt => 
+            opt.setName('side').setDescription('Select your prediction target').setRequired(true)
+               .addChoices({ name: '🟡 Heads', value: 'heads' }, { name: '⚪ Tails', value: 'tails' })),
+
+    new SlashCommandBuilder()
+        .setName('jackpot')
+        .setDescription('🎡 Spin the premium jackpot wheel under verified active odds')
+        .addIntegerOption(opt => 
+            opt.setName('gems').setDescription('Amount of Pet Simulator 99 gems to wager').setRequired(true)),
+
+    new SlashCommandBuilder()
+        .setName('dice')
+        .setDescription('🎲 Roll high dice against the house using native live calculations')
+        .addIntegerOption(opt => 
+            opt.setName('gems').setDescription('Amount of Pet Simulator 99 gems to wager').setRequired(true))
+].map(cmd => cmd.toJSON());
+
+// REPLACE THESE WITH YOUR ACTUAL DEV PORTAL STRINGS
+const BOT_TOKEN = 'YOUR_DISCORD_BOT_TOKEN_HERE';
+const CLIENT_ID = 'YOUR_BOT_CLIENT_ID_HERE';
+
+const rest = new REST({ version: '10' }).setToken(BOT_TOKEN);
+
+(async () => {
+    try {
+        console.log('🔄 Syncing premium slash menus into centralized data grids...');
+        await rest.put(
+            Routes.applicationCommands(CLIENT_ID),
+            { body: commands }
+        );
+        console.log('✅ Visual Slash modules synced across universal network clusters!');
+    } catch (error) {
+        console.error('❌ Deployment Error:', error);
+    }
+})();
