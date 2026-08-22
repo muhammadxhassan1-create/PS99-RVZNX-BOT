@@ -1,9 +1,13 @@
-const { Client, EmbedBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 
-// Create standard client instance using basic configuration intents
-const client = new Client({ 
-    intents: [] 
-}); 
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
+});
+ 
 
 // Organic RNG engine matching shown UI layout parameters
 function evaluateFairGameOutcome() {
