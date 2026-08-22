@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "casino-engine.js",
   "scripts": {
-    "start": "node casino-engine.js"
+"main": "index.js",
   },
   "dependencies": {
     "discord.js": "^14.14.1"
