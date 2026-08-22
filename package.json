@@ -1,9 +1,9 @@
 {
   "name": "ps99-bet-bot",
   "version": "1.0.0",
-  "main": "casino-engine.js",
+  "main": "index.js",
   "scripts": {
-"main": "index.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "discord.js": "^14.14.1"
